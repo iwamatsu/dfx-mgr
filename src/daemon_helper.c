@@ -881,7 +881,7 @@ firmware_dir_walk(void)
 }
 
 #define BUF_LEN (10 * (sizeof(struct inotify_event) + NAME_MAX + 1))
-void *threadFunc(void *)
+void *threadFunc(void *args)
 {
     int wd, j, ret;
     char buf[BUF_LEN] __attribute__ ((aligned(8)));
@@ -890,6 +890,8 @@ void *threadFunc(void *)
     char new_dir[512],fname[600];
     struct inotify_event *event;
     struct basePLDesign *base;
+
+    (void)args;
 
     active_watch = (struct watch *)calloc(sizeof(struct watch), MAX_WATCH);
     base_designs = (struct basePLDesign *)calloc(sizeof(struct basePLDesign), MAX_WATCH);
