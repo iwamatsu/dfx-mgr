@@ -336,8 +336,7 @@ int sys_remove_accel(acapd_accel_t *accel, unsigned int async)
 	(void)async;
 	fpga_cfg_id = accel->sys_info.fpga_cfg_id;
 	DFX_DBG("Removing accel %s", accel->sys_info.tmp_dir);
-	if (accel->sys_info.tmp_dir != NULL && accel->pkg->type ==
-					ACAPD_ACCEL_PKG_TYPE_TAR_GZ) {
+	if (accel->pkg->type == ACAPD_ACCEL_PKG_TYPE_TAR_GZ) {
 		DFX_DBG("Removing tmp dir for .tar.gz");
 		ret = remove_directory(accel->sys_info.tmp_dir);
 		if (ret != 0) {
