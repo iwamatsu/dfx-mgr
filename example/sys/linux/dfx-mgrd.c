@@ -92,6 +92,7 @@ process_dfx_req(int fd, fd_set *fdset)
 		break;
 
 	case LIST_PACKAGE:
+		{
 		// change to: listAccelerators(buf, size))
 		char *msg = listAccelerators();
 		send_msg.size = strnlen(msg, sizeof(send_msg.data));
@@ -99,6 +100,7 @@ process_dfx_req(int fd, fd_set *fdset)
 		if (write(fd, &send_msg, HEADERSIZE + send_msg.size) < 0)
 			DFX_ERR("LIST_PACKAGE write(%d)", fd);
 		free(msg);
+		}
 		break;
 
 	case LIST_ACCEL_UIO:
