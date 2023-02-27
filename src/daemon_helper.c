@@ -1024,7 +1024,7 @@ int dfx_init()
 	//if (stat("/configfs/device-tree/overlays",&info))
 	//	ret = system("rmdir /configfs/device-tree/overlays/*");
 	_unused(ret);
-	if (config.defaul_accel_name != NULL && strcmp(config.defaul_accel_name, "") != 0)
+	if (strcmp(config.defaul_accel_name, "") != 0)
 		load_accelerator(config.defaul_accel_name);
 	return 0;
 }
